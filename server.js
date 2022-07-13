@@ -2,6 +2,7 @@ import express from "express";
 import { JobSource } from "./models/JobSource.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cors from "cors";
 
 dotenv.config();
 
@@ -19,6 +20,8 @@ mongoose.connect(MONGODB_URI, (err) => {
 
 const app = express();
 const port = process.env.PORT || 3044;
+
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("<h1>MS Job Manager API</h1>");
